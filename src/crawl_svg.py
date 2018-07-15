@@ -36,3 +36,20 @@ ex:
 #CCFFFF - Linguistics
 
 '''
+
+from bs4 import BeautifulSoup
+import json
+
+def dump_to_file(obj):
+    pass
+
+def classify_domains(markup_document):
+    soup = BeautifulSoup(markup_document, 'html.parser')
+    print soup
+
+def main():
+    with open('./cache/2015.svg') as file:
+        classify_domains(file)
+
+if __name__ == '__main__':
+    main()
