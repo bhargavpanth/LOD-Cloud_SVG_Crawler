@@ -7,7 +7,7 @@ def download(url, fname):
 
 def main():
     obj = [{
-        'fname': '2015.svg',
+        'fname': '2014.svg',
         'url': 'http://lod-cloud.net/versions/2014-08-30/lod-cloud_colored.svg'
     }, {
         'fname': '2017.svg',
