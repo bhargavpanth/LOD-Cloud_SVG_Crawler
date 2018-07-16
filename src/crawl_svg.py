@@ -37,15 +37,36 @@ ex:
 
 '''
 
-from bs4 import BeautifulSoup
 import json
+from bs4 import BeautifulSoup
 
 def dump_to_file(obj):
     pass
 
-def classify_domains(markup_document):
-    soup = BeautifulSoup(markup_document, 'html.parser')
-    print soup
+def classify_domains(svg_file):
+    soup = BeautifulSoup(svg_file, 'html.parser')
+    g_node = soup.find('g')
+    children = g_node.findChildren()
+    for each_child in children:
+        try:
+            n = each_child['xlink:href']
+        except Exception as e:
+            pass
+        else:
+            print n
+            colour_element = each_child.find('g', {'id': 'Oval'})
+            dataset_name =  each_child.find('tspan')
+            if dataset_name is None:
+                pass
+            else:
+                print dataset_name.get_text()
+            if colour_element is None:
+                pass
+            else:
+                print colour_element['fill']
+            print '---'
+
+
 
 def main():
     with open('./cache/2015.svg') as file:
